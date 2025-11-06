@@ -39,6 +39,9 @@ export const env = createEnv({
     STATUS_SERVICE_URL: z.string().optional(),
     STATUS_LIST_URL: z.string().url().optional(),
     STATUS_LIST_ID: z.string().optional(),
+
+    // Email Microservice
+    EMAIL_SERVICE_URL: z.string().url(),
   },
 
   /**
@@ -65,6 +68,7 @@ export const env = createEnv({
     STATUS_SERVICE_URL: process.env.STATUS_SERVICE_URL,
     STATUS_LIST_URL: process.env.STATUS_LIST_URL,
     STATUS_LIST_ID: process.env.STATUS_LIST_ID,
+    EMAIL_SERVICE_URL: process.env.EMAIL_SERVICE_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

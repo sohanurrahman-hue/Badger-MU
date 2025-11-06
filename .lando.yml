@@ -22,6 +22,9 @@ services:
     ssl: 4444
     command: pnpm dev
 
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   mongodb:
     portforward: true
     type: mongo:7.0
@@ -40,7 +43,6 @@ services:
     ssl: false
     sslExpose: false
     port: 4008
-
 proxy:
   appserver:
     - badgeengine.lndo.site:3000
