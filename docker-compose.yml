@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  appserver:
+    build: .
+    ports:
+      - "3000:3000"
+      - "4444:4444"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - .env
+      # Add other environment variables from your .env file here
+    depends_on:
+      - mongodb
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  mongodb:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    command: mongod --replSet rs0 --bind_ip_all
+    volumes:
+      - mongo-data:/data/db
+
+  mongo-init:
+    image: mongo:7.0
+    depends_on:
+      - mongodb
+    command: >
+      bash -c "
+        mongosh --host mongodb --eval \"    try {
+            rs.status();
+          } catch (err) {
+            rs.initiate({
+              _id: 'rs0',
+              members: [{ _id: 0, host: 'mongodb:27017' }]
+            });
+          }
+        \"
+      "
+
+volumes:
+  mongo-data:

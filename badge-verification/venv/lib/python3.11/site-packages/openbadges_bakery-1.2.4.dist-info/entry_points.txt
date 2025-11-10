@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        bakery=openbadges_bakery.cli:cli
+    

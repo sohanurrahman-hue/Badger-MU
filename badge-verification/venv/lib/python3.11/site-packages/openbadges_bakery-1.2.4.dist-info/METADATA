@@ -1,0 +1,91 @@
+Metadata-Version: 2.1
+Name: openbadges-bakery
+Version: 1.2.4
+Summary: A python utility for baking and extracting Open Badges metadata from images.
+Home-page: https://badgr.com
+Author: Concentric Sky
+Author-email: notto@concentricsky.com
+License: Apache License 2.0
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Education
+Classifier: Topic :: Utilities
+Classifier: Intended Audience :: Developers
+Requires-Dist: Click (>=6.6)
+Requires-Dist: pypng (>=0.0.20)
+Requires-Dist: defusedxml (<1.0,>=0.6.0)
+
+
+Open Badges Bakery
+==================
+
+This package contains the utilities needed to "bake" Open Badges metadata into
+PNG or SVG image files or extract ('unbake') metada from such images.
+
+This Open Badges Bakery is produced by Concentric Sky. https://concentricsky.com
+
+Installation
+------------
+
+pip:
+
+.. code:: bash
+
+    pip install openbadges_bakery
+
+Command Line Interface
+----------------------
+
+There is a command line interface for baking and unbaking assertion data. 
+
+To bake a badge, identify the existing BadgeClass image with the input_filename
+and desired baked Assertion image filename to be created as well as the data to
+be baked into the image.
+
+.. code:: bash
+
+    bakery bake [input_filename] [output_filename] --data='{"data": "data"}'
+
+To extract Open Badges data from an image, use the ``unbake`` command.
+
+.. code:: bash
+
+    bakery unbake [input_filename]
+
+Output_filename is optional if you want the baked data to be written to a file.
+
+.. code:: bash
+
+    bakery unbake [input_filename] [output_filename]
+
+Python Interface
+----------------
+The bake and unbake functions are available when installed as a python module
+
+To bake a badge, pass in an open file as ``input_file`` and the string of the 
+badge data you wish to bake into the image. Result is an open TemporaryFile
+that contains the data.
+
+.. code:: python
+
+    from openbadges_bakery import bake
+    output_file = bake(input_file, assertion_json_string)
+
+To unbake a badge, pass in an open file as ``input_file``:
+
+.. code:: python
+
+    from openbadges_bakery import unbake
+    output_file = unbake(input_file)
+
+

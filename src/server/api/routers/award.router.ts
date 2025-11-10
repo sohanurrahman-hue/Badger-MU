@@ -50,7 +50,7 @@ const sendAwardEmail = async (
 
         const payload = new FormData();
         payload.append("email", email);
-        payload.append("body",  `Congratulations ${name}, you have been awarded the "${awardName}" credential ${credentialId}! You can view your award here: ${awardUrl}. And it was issued by ${issuerName}.`);
+        payload.append("body",  `Congratulations ${name}, you have been awarded the "${awardName}" credential ${credentialId}! You can view your award here: ${awardUrl}. And it was issued by ${issuerName}. ANd ImageUrl is ${ImageUrl}`);
         payload.append("subject", `You've been awarded the "${awardName}" credential!`);
 
         // Get image filename for logging

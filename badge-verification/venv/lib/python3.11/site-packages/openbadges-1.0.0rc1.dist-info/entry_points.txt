@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        openbadges=openbadges.command_line:cli
+    

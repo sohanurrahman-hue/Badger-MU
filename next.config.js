@@ -5,7 +5,7 @@
 await import("./src/env.mjs");
 
 /** @type {import("next").NextConfig} */
-const config = { 
+const config = {
     transpilePackages: ['@mdxeditor/editor'],
 };
 
@@ -15,3 +15,4 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export default config;
+

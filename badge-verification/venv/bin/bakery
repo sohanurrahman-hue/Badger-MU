@@ -1,0 +1,7 @@
+#!/Users/sohanurrahman/Desktop/Projects/badge-engine/badge-verification/venv/bin/python3.11
+import sys
+from openbadges_bakery.cli import cli
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(cli())

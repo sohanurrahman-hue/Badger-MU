@@ -10,6 +10,7 @@ export async function submitCredential(
   form: PartialCredentialForm,
 ) {
   const createCredentialForIssuer = createCredential.bind(null, issuerId);
+  console.log(`In form submit: IssuerId: ${issuerId}`);
 
   try {
     const { image, ...credential } =

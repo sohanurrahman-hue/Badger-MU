@@ -47,6 +47,7 @@ proxy:
   appserver:
     - badgeengine.lndo.site:3000
     - prisma.badgeengine.lndo.site:3100
+    - nondisbursed-yanira-stampedingly.ngrok-free.dev:3000
   status:
     - status.badgeengine.lndo.site:4008
 
