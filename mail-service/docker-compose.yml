@@ -1,9 +1,0 @@
-services:
-  mail-service:
-    build:
-      dockerfile: Dockerfile
-    container_name: mail-service
-    ports:
-      - "8000:8000"
-    environment:
-      - .env

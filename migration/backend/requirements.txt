@@ -1,0 +1,73 @@
+# Badge Engine Backend Requirements
+# Python 3.11+
+# Note: Versions will be pinned using pip freeze after installation
+
+# FastAPI and ASGI server
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Database
+sqlalchemy
+psycopg2-binary
+alembic
+
+# Authentication
+msal
+python-jose[cryptography]
+passlib[bcrypt]
+pyjwt
+
+# SCIM
+scim2-models
+scim2-filter-parser
+
+# Pydantic for validation
+pydantic
+pydantic-settings
+email-validator
+
+# Caching & Queue
+redis
+celery
+kombu
+
+# HTTP client
+httpx
+requests
+
+# Image processing for badge baking
+Pillow
+
+# Cryptography for signing
+cryptography
+ecdsa
+
+# Data validation
+jsonschema
+
+# Environment variables
+python-dotenv
+
+# Logging
+python-json-logger
+
+# Testing
+pytest
+pytest-asyncio
+pytest-cov
+
+
+# Code quality
+black
+flake8
+mypy
+isort
+
+# Rust PyO3 extension (will be built locally)
+maturin
+
+# Utilities
+python-dateutil
+pytz
+

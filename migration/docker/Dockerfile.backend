@@ -1,0 +1,61 @@
+# Badge Engine Backend Dockerfile
+# Multi-stage build: Rust compilation + Python setup
+
+FROM rust:1.75-slim as rust-builder
+
+WORKDIR /app
+COPY backend/rust_extension /app/rust_extension
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    pkg-config \
+    libssl-dev \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Build Rust extension
+WORKDIR /app/rust_extension
+RUN cargo build --release
+
+
+# Python stage
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements
+COPY backend/requirements.txt /app/requirements.txt
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy Rust extension from builder
+COPY --from=rust-builder /app/rust_extension/target/release/libbadge_baking.so /usr/local/lib/python3.11/site-packages/badge_baking.so
+
+# Copy application code
+COPY backend /app/backend
+
+# Create logs directory
+RUN mkdir -p /app/logs
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+# Expose port
+EXPOSE 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD python -c "import requests; requests.get('http://localhost:8000/health')" || exit 1
+
+# Run application
+CMD ["uvicorn", "backend.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+

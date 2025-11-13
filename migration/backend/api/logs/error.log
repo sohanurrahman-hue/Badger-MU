@@ -1,0 +1,1823 @@
+2025-11-12 14:22:06,395 - main - ERROR - Unhandled exception: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x1069c1260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1089, in openapi
+    return JSONResponse(self.openapi())
+                        ^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1060, in openapi
+    self.openapi_schema = get_openapi(
+                          ^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/openapi/utils.py", line 504, in get_openapi
+    field_mapping, definitions = get_definitions(
+                                 ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/main.py", line 292, in get_definitions
+    v2_field_maps, v2_definitions = v2.get_definitions(
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/v2.py", line 244, in get_definitions
+    field_mapping, definitions = schema_generator.generate_definitions(inputs=inputs)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 379, in generate_definitions
+    self.generate_inner(schema)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2088, in definitions_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 528, in js_updates_handler_func
+    json_schema = {**current_handler(schema_or_field), **js_updates}
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1134, in function_after_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1245, in nullable_schema
+    inner_json_schema = self.generate_inner(schema['schema'])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1148, in function_plain_schema
+    return self.handle_invalid_for_json_schema(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2442, in handle_invalid_for_json_schema
+    raise PydanticInvalidForJsonSchema(f'Cannot generate a JsonSchema for {error_info}')
+pydantic.errors.PydanticInvalidForJsonSchema: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x1069c1260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+2025-11-12 14:22:58,687 - main - ERROR - Unhandled exception: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x111035260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1089, in openapi
+    return JSONResponse(self.openapi())
+                        ^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1060, in openapi
+    self.openapi_schema = get_openapi(
+                          ^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/openapi/utils.py", line 504, in get_openapi
+    field_mapping, definitions = get_definitions(
+                                 ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/main.py", line 292, in get_definitions
+    v2_field_maps, v2_definitions = v2.get_definitions(
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/v2.py", line 244, in get_definitions
+    field_mapping, definitions = schema_generator.generate_definitions(inputs=inputs)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 379, in generate_definitions
+    self.generate_inner(schema)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2088, in definitions_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 528, in js_updates_handler_func
+    json_schema = {**current_handler(schema_or_field), **js_updates}
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1134, in function_after_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1245, in nullable_schema
+    inner_json_schema = self.generate_inner(schema['schema'])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1148, in function_plain_schema
+    return self.handle_invalid_for_json_schema(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2442, in handle_invalid_for_json_schema
+    raise PydanticInvalidForJsonSchema(f'Cannot generate a JsonSchema for {error_info}')
+pydantic.errors.PydanticInvalidForJsonSchema: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x111035260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+2025-11-12 14:22:59,811 - main - ERROR - Unhandled exception: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x111035260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1089, in openapi
+    return JSONResponse(self.openapi())
+                        ^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1060, in openapi
+    self.openapi_schema = get_openapi(
+                          ^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/openapi/utils.py", line 504, in get_openapi
+    field_mapping, definitions = get_definitions(
+                                 ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/main.py", line 292, in get_definitions
+    v2_field_maps, v2_definitions = v2.get_definitions(
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/v2.py", line 244, in get_definitions
+    field_mapping, definitions = schema_generator.generate_definitions(inputs=inputs)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 379, in generate_definitions
+    self.generate_inner(schema)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2088, in definitions_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 528, in js_updates_handler_func
+    json_schema = {**current_handler(schema_or_field), **js_updates}
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1134, in function_after_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1245, in nullable_schema
+    inner_json_schema = self.generate_inner(schema['schema'])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1148, in function_plain_schema
+    return self.handle_invalid_for_json_schema(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2442, in handle_invalid_for_json_schema
+    raise PydanticInvalidForJsonSchema(f'Cannot generate a JsonSchema for {error_info}')
+pydantic.errors.PydanticInvalidForJsonSchema: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x111035260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+2025-11-12 14:23:26,521 - main - ERROR - Unhandled exception: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x105035260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1089, in openapi
+    return JSONResponse(self.openapi())
+                        ^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1060, in openapi
+    self.openapi_schema = get_openapi(
+                          ^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/openapi/utils.py", line 504, in get_openapi
+    field_mapping, definitions = get_definitions(
+                                 ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/main.py", line 292, in get_definitions
+    v2_field_maps, v2_definitions = v2.get_definitions(
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/v2.py", line 244, in get_definitions
+    field_mapping, definitions = schema_generator.generate_definitions(inputs=inputs)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 379, in generate_definitions
+    self.generate_inner(schema)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2088, in definitions_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 528, in js_updates_handler_func
+    json_schema = {**current_handler(schema_or_field), **js_updates}
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1134, in function_after_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1245, in nullable_schema
+    inner_json_schema = self.generate_inner(schema['schema'])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1148, in function_plain_schema
+    return self.handle_invalid_for_json_schema(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2442, in handle_invalid_for_json_schema
+    raise PydanticInvalidForJsonSchema(f'Cannot generate a JsonSchema for {error_info}')
+pydantic.errors.PydanticInvalidForJsonSchema: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x105035260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+2025-11-12 14:23:27,726 - main - ERROR - Unhandled exception: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x105035260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1089, in openapi
+    return JSONResponse(self.openapi())
+                        ^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1060, in openapi
+    self.openapi_schema = get_openapi(
+                          ^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/openapi/utils.py", line 504, in get_openapi
+    field_mapping, definitions = get_definitions(
+                                 ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/main.py", line 292, in get_definitions
+    v2_field_maps, v2_definitions = v2.get_definitions(
+                                    ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/fastapi/_compat/v2.py", line 244, in get_definitions
+    field_mapping, definitions = schema_generator.generate_definitions(inputs=inputs)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 379, in generate_definitions
+    self.generate_inner(schema)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2088, in definitions_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 528, in js_updates_handler_func
+    json_schema = {**current_handler(schema_or_field), **js_updates}
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1134, in function_after_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 556, in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/main.py", line 852, in __get_pydantic_json_schema__
+    return handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1604, in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1717, in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1508, in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1576, in model_field_schema
+    return self.generate_inner(schema['schema'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1175, in default_schema
+    json_schema = self.generate_inner(schema['schema'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1245, in nullable_schema
+    inner_json_schema = self.generate_inner(schema['schema'])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 959, in list_schema
+    items_schema = {} if 'items_schema' not in schema else self.generate_inner(schema['items_schema'])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 578, in generate_inner
+    json_schema = current_handler(schema)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 37, in __call__
+    return self.handler(core_schema)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 511, in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 1148, in function_plain_schema
+    return self.handle_invalid_for_json_schema(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/venv/lib/python3.11/site-packages/pydantic/json_schema.py", line 2442, in handle_invalid_for_json_schema
+    raise PydanticInvalidForJsonSchema(f'Cannot generate a JsonSchema for {error_info}')
+pydantic.errors.PydanticInvalidForJsonSchema: Cannot generate a JsonSchema for core_schema.PlainValidatorFunctionSchema ({'type': 'no-info', 'function': <function CompactJWSSchema.__get_pydantic_core_schema__.<locals>.validate_compact_jws at 0x105035260>})
+
+For further information visit https://errors.pydantic.dev/2.12/u/invalid-for-json-schema
+2025-11-13 11:36:01,146 - backend.api.routers.achievements - ERROR - Error creating achievement: name 'current_user' is not defined
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/api/routers/achievements.py", line 225, in create_achievement
+    logger.info(f"Created achievement '{achievement.name}' (ID: {achievement.id}) for user {current_user.get('email')}")
+                                                                                            ^^^^^^^^^^^^
+NameError: name 'current_user' is not defined
+2025-11-13 11:38:13,649 - backend.api.main - ERROR - Validation error: [{'type': 'value_error', 'loc': ('body', 'type'), 'msg': "Value error, The type MUST include the IRI 'Achievement'", 'input': ['Badge'], 'ctx': {'error': ValueError("The type MUST include the IRI 'Achievement'")}}]
+2025-11-13 11:39:20,309 - backend.api.main - ERROR - Validation error: [{'type': 'value_error', 'loc': ('body', 'type'), 'msg': "Value error, The type MUST include the IRI 'Achievement'", 'input': ['Badge'], 'ctx': {'error': ValueError("The type MUST include the IRI 'Achievement'")}}]
