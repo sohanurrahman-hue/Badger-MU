@@ -3,22 +3,221 @@ Achievements API Router
 """
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Optional
 import logging
 import uuid
 
 from backend.db import get_db
 from backend.db.models import (
     Achievement, RelatedAchievement, ResultDescription, 
-    Alignment, IdentifierEntry, Image, Profile
+    Alignment, IdentifierEntry, Image, Profile, IssuedBadge
 )
 from backend.auth.middleware import get_current_user
 from backend.schemas.open_badges.achievement import AchievementSchema
+from backend.db.models import AchievementTypeEnum
+from datetime import datetime, timedelta
+from pydantic import BaseModel
+from fastapi.responses import PlainTextResponse
 
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import rsa
+import base64
+import jwt
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+# === RSA helpers ===
+
+def _b64url_no_pad(b: bytes) -> str:
+    return base64.urlsafe_b64encode(b).decode("ascii").rstrip("=")
+
+def _int_to_b64url(n: int) -> str:
+    return _b64url_no_pad(n.to_bytes((n.bit_length() + 7) // 8, "big"))
+
+def get_rsa_private_key():
+    """
+    Load an RSA private key from backend/private_key.pem.
+    The PEM must contain an RSA key (PKCS#8 or PKCS#1). No password.
+    """
+    backend_dir = Path(__file__).parent.parent.parent  # .../backend
+    private_key_path = backend_dir / "private_key.pem"
+
+    try:
+        with open(private_key_path, "rb") as f:
+            pem = f.read()
+    except FileNotFoundError:
+        raise RuntimeError(
+            f"private_key.pem not found at {private_key_path}. "
+            "Generate an RSA keypair and save it there."
+        )
+
+    key = serialization.load_pem_private_key(pem, password=None)
+    # Guard: must be RSA
+    if not isinstance(key, rsa.RSAPrivateKey):
+        raise RuntimeError(
+            "private_key.pem is not an RSA private key. "
+            "Either replace it with an RSA key or switch algorithm to EdDSA."
+        )
+    return key
+
+def get_rsa_public_key():
+    return get_rsa_private_key().public_key()
+
+def get_rsa_jwk_public() -> dict:
+    """
+    Build a public RSA JWK {kty:'RSA', n:'...', e:'AQAB'} from the loaded RSA key.
+    """
+    pub = get_rsa_public_key()
+    numbers = pub.public_numbers()
+    e = numbers.e
+    n = numbers.n
+    return {
+        "kty": "RSA",
+        "n": _int_to_b64url(n),
+        "e": _int_to_b64url(e),
+    }
+
+def get_rsa_headers() -> dict:
+    """
+    Full JWT header for RS256 with embedded JWK (so validators can verify w/o JWKS).
+    """
+    return {
+        "alg": "RS256",
+        "typ": "JWT",
+        "jwk": get_rsa_jwk_public(),
+    }
+
+
+# --- FIXED SCHEMAS AND ENDPOINTS ---
+class IssueBadgeRequest(BaseModel):
+    recipient_id: Optional[str] = None  # <-- **FIX:** Added recipient ID
+    organization_name: str
+    organization_id: str
+    achievement_name: str
+    achievement_type: str
+    narrative: str
+    description: str
+    achievement_id: str  # This is the ID for the *achievement template*
+
+
+@router.post("/issue-vc-jwt", status_code=status.HTTP_201_CREATED)
+async def issue_badge_as_jwt_rs256(
+    request: IssueBadgeRequest,
+    db: Session = Depends(get_db)
+):
+    """
+    Issues a new badge as a VC-JWT using RS256 (RSA).
+    Saves the JWT to the database for later retrieval.
+    """
+    domain = "https://nondisbursed-yanira-stampedingly.ngrok-free.dev"
+    if not domain:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="DOMAIN environment variable not set"
+        )
+
+    badge_id = uuid.uuid4()
+
+    # Public URL for the credential (must match your GET endpoint path)
+    public_url = f"{domain}/api/achievements/credentials/{badge_id}"
+
+    # RFC3339 'Z' time
+    validFrom = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    validUntil = (datetime.now(timezone.utc) + timedelta(days=365)).strftime('%Y-%m-%dT%H:%M:%SZ')
+    # Minimal OB 3.0-esque payload (you can expand as needed)
+    jwt_payload = {
+        "@context": [
+            "https://www.w3.org/ns/credentials/v2",
+            "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+        ],
+        "id": public_url,
+        "type": ["VerifiableCredential", "OpenBadgeCredential"],
+        "issuer": {
+            "id": f"{domain}/issuers/{request.organization_id}",
+            "type": ["Profile"],
+            "name": request.organization_name
+        },
+        "validFrom": validFrom,
+        "validUntil": validUntil,
+        "name": request.achievement_name,
+        "credentialSubject": {
+            "id": request.recipient_id,
+            "type": ["AchievementSubject"],
+            "achievement": {
+                "id": f"{domain}/achievements/{request.achievement_id}",
+                "type": [request.achievement_type],
+                "criteria": {"narrative": request.narrative},
+                "description": request.description,
+                "name": request.achievement_name
+            }
+        },
+
+        # Standard JWT claims that many tools expect:
+        "iss": f"{domain}/issuers/{request.organization_id}",
+        "sub": request.recipient_id,
+        "jti": public_url,
+    }
+
+    # Load RSA private key and sign with RS256; include proper header with embedded JWK
+    private_key = get_rsa_private_key()
+    vc_jwt_string = jwt.encode(
+        jwt_payload,
+        private_key,
+        algorithm="RS256",
+        headers=get_rsa_headers()
+    )
+
+    issued_badge = IssuedBadge(
+        id=badge_id,
+        jwt_string=vc_jwt_string,
+        achievement_id=request.achievement_id,
+        organization_id=request.organization_id,
+        recipient_id=request.recipient_id
+    )
+    db.add(issued_badge)
+    db.commit()
+    db.refresh(issued_badge)
+
+    return {
+        "message": "VC-JWT (RS256) created successfully",
+        "badge_jwt": vc_jwt_string,
+        "badge_uuid": str(issued_badge.id),
+        "credential_url": public_url
+    }
+
+
+
+@router.get(
+    "/credentials/{badge_uuid}",
+    response_class=PlainTextResponse # Tell FastAPI to return as raw text
+)
+async def get_issued_badge(
+    badge_uuid: uuid.UUID,
+    db: Session = Depends(get_db)
+):
+    """
+    Serves the publicly verifiable badge (as a JWS string).
+    This is the URL you give to the validator.
+    """
+    
+    # This query will now work because you're saving the 'id=badge_uuid'
+    badge = db.query(IssuedBadge).filter(IssuedBadge.id == badge_uuid).first()
+    
+    if not badge:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Badge not found"
+        )
+
+    # Return the raw JWS string (the badge)
+    return badge.jwt_string
+
 
 
 @router.get("/")
@@ -43,225 +242,4 @@ async def get_achievement(
         raise HTTPException(status_code=404, detail="Achievement not found")
     return achievement
 
-
-@router.post("/", status_code=status.HTTP_201_CREATED)
-async def create_achievement(
-    achievement_data: AchievementSchema,
-    db: Session = Depends(get_db),
-    # current_user: dict = Depends(get_current_user)
-):
-    """
-    Create a new achievement
-    
-    Maps AchievementSchema fields to Achievement model:
-    - Schema uses camelCase (e.g., achievementType, creditsAvailable)
-    - Model uses snake_case (e.g., achievement_type, credits_available)
-    - Nested objects (alignment, related, resultDescription) are handled separately
-    """
-    try:
-        # Check if IRI already exists
-        existing = db.query(Achievement).filter(Achievement.iri == achievement_data.id).first()
-        if existing:
-            raise HTTPException(
-                status_code=status.HTTP_409_CONFLICT,
-                detail=f"Achievement with IRI '{achievement_data.id}' already exists"
-            )
-        
-        # Handle creator - get creator_id from creator profile if provided
-        creator_id = None
-        if achievement_data.creator:
-            if achievement_data.creator.id:
-                # Creator is a URL/IRI - try to find existing profile
-                creator_profile = db.query(Profile).filter(Profile.iri == achievement_data.creator.id).first()
-                if creator_profile:
-                    creator_id = creator_profile.id
-                else:
-                    # TODO: Create profile from creator schema if needed
-                    logger.warning(f"Creator profile not found for IRI: {achievement_data.creator.id}")
-            # If creator is a full ProfileSchema object, we'd need to create/update it
-            # For now, we'll use the current user as creator if no creator_id found
-            # if not creator_id:
-            #     # Use current user's profile as creator
-            #     user_profile = db.query(Profile).filter(Profile.email == current_user.get("email")).first()
-            #     if user_profile:
-            #         creator_id = user_profile.id
-        
-        # Handle image - get image_id from image if provided
-        image_id = None
-        if achievement_data.image:
-            if achievement_data.image.id:
-                # Image is a URL/IRI - try to find existing image
-                existing_image = db.query(Image).filter(Image.iri == achievement_data.image.id).first()
-                if existing_image:
-                    image_id = existing_image.id
-                else:
-                    # Create new image from schema
-                    new_image = Image(
-                        iri=achievement_data.image.id,
-                        type=achievement_data.image.type if hasattr(achievement_data.image, 'type') else ["Image"],
-                        caption=achievement_data.image.caption if hasattr(achievement_data.image, 'caption') else None,
-                        encoded_image_data=achievement_data.image.id if hasattr(achievement_data.image, 'id') else None
-                    )
-                    db.add(new_image)
-                    db.flush()  # Get the ID
-                    image_id = new_image.id
-        
-        # Convert criteria schema to dict for JSONB storage
-        criteria_dict = achievement_data.criteria.model_dump(exclude_none=True)
-        
-        # Convert endorsementJwt to list of dicts if provided
-        endorsement_jwt = None
-        if achievement_data.endorsementJwt:
-            endorsement_jwt = [jwt.model_dump() if hasattr(jwt, 'model_dump') else jwt for jwt in achievement_data.endorsementJwt]
-        
-        # Create the achievement
-        achievement = Achievement(
-            id=uuid.uuid4(),  # Generate new UUID
-            iri=achievement_data.id,
-            type=achievement_data.type,  # JSONB array
-            achievement_type=achievement_data.achievementType,  # Enum
-            name=achievement_data.name,
-            description=achievement_data.description,
-            criteria=criteria_dict,  # JSONB dict
-            credits_available=achievement_data.creditsAvailable,
-            field_of_study=achievement_data.fieldOfStudy,
-            human_code=achievement_data.humanCode,
-            in_language=achievement_data.inLanguage,
-            specialization=achievement_data.specialization,
-            tags=achievement_data.tag,  # Schema uses 'tag', model uses 'tags'
-            version=achievement_data.version,
-            is_public=False,  # Default to private
-            endorsement_jwt=endorsement_jwt,  # JSONB array
-            creator_id=creator_id,
-            image_id=image_id
-        )
-        
-        db.add(achievement)
-        db.flush()  # Get the achievement ID for related objects
-        
-        # Handle related achievements
-        if achievement_data.related:
-            for related_schema in achievement_data.related:
-                related = RelatedAchievement(
-                    achievement_id=achievement.id,
-                    related_iri=related_schema.id,
-                    type=related_schema.type,
-                    in_language=related_schema.inLanguage,
-                    version=related_schema.version
-                )
-                db.add(related)
-        
-        # Handle result descriptions
-        if achievement_data.resultDescription:
-            from backend.db.models import ResultTypeEnum
-            for result_desc_schema in achievement_data.resultDescription:
-                result_desc = ResultDescription(
-                    iri=result_desc_schema.id,
-                    type=result_desc_schema.type,
-                    name=result_desc_schema.name,
-                    result_type=result_desc_schema.resultType,  # Enum
-                    allowed_value=result_desc_schema.allowedValue,
-                    required_level=result_desc_schema.requiredLevel,
-                    required_value=result_desc_schema.requiredValue,
-                    value_min=result_desc_schema.valueMin,
-                    value_max=result_desc_schema.valueMax,
-                    achievement_id=achievement.id
-                )
-                db.add(result_desc)
-                
-                # Handle rubric criterion levels if present
-                if result_desc_schema.rubricCriterionLevel:
-                    from backend.db.models import RubricCriterionLevel
-                    for rubric_level_schema in result_desc_schema.rubricCriterionLevel:
-                        rubric_level = RubricCriterionLevel(
-                            iri=rubric_level_schema.id,
-                            type=rubric_level_schema.type,
-                            name=rubric_level_schema.name,
-                            description=rubric_level_schema.description,
-                            level=rubric_level_schema.level,
-                            points=rubric_level_schema.points,
-                            result_description_id=result_desc.id
-                        )
-                        db.add(rubric_level)
-        
-        # Handle alignments (many-to-many relationship)
-        if achievement_data.alignment:
-            for alignment_schema in achievement_data.alignment:
-                # Check if alignment already exists
-                existing_alignment = db.query(Alignment).filter(
-                    Alignment.target_url == alignment_schema.targetUrl
-                ).first()
-                
-                if not existing_alignment:
-                    from backend.db.models import AlignmentTargetTypeEnum
-                    alignment = Alignment(
-                        type=alignment_schema.type,
-                        target_name=alignment_schema.targetName,
-                        target_url=alignment_schema.targetUrl,
-                        target_description=alignment_schema.targetDescription,
-                        target_framework=alignment_schema.targetFramework,
-                        target_code=alignment_schema.targetCode,
-                        target_type=alignment_schema.targetType if hasattr(alignment_schema, 'targetType') else None
-                    )
-                    db.add(alignment)
-                    db.flush()
-                    achievement.alignments.append(alignment)
-                else:
-                    achievement.alignments.append(existing_alignment)
-        
-        # Handle other identifiers
-        if achievement_data.otherIdentifier:
-            for identifier_schema in achievement_data.otherIdentifier:
-                identifier = IdentifierEntry(
-                    type=identifier_schema.type,
-                    identifier=identifier_schema.identifier,
-                    identifier_type=identifier_schema.identifierType,  # Required field
-                    achievement_id=achievement.id
-                )
-                db.add(identifier)
-        
-        db.commit()
-        db.refresh(achievement)
-        
-        logger.info(f"Created achievement '{achievement.name}' (ID: {achievement.id}) successfully.")
-        
-        return {
-            "id": str(achievement.id),
-            "iri": achievement.iri,
-            "name": achievement.name,
-            "message": "Achievement created successfully"
-        }
-        
-    except HTTPException:
-        raise
-    except Exception as e:
-        db.rollback()
-        logger.exception(f"Error creating achievement: {str(e)}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to create achievement: {str(e)}"
-        )
-
-
-@router.put("/{achievement_id}")
-async def update_achievement(
-    achievement_id: str,
-    # achievement_data: AchievementUpdate,
-    db: Session = Depends(get_db),
-    current_user: dict = Depends(get_current_user)
-):
-    """Update an achievement"""
-    # TODO: Implement achievement update
-    return {"message": "Achievement update endpoint - to be implemented"}
-
-
-@router.delete("/{achievement_id}")
-async def delete_achievement(
-    achievement_id: str,
-    db: Session = Depends(get_db),
-    current_user: dict = Depends(get_current_user)
-):
-    """Delete an achievement"""
-    # TODO: Implement achievement deletion
-    return {"message": "Achievement deletion endpoint - to be implemented"}
 

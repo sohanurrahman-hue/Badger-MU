@@ -424,8 +424,7 @@ class Achievement(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     iri = Column(String(500), unique=True, nullable=False, index=True)
-    type = Column(JSONB, nullable=False)
-    achievement_type = Column(SQLEnum(AchievementTypeEnum, name='achievement_type_enum'))
+    achievement_type = Column(SQLEnum(AchievementTypeEnum, name='achievement_type_enum'), nullable=False)
     name = Column(String(500), nullable=False, index=True)
     description = Column(Text, nullable=False)
     criteria = Column(JSONB, nullable=False)  # {id, narrative}
@@ -940,4 +939,21 @@ class TimePeriod(Base):
 
     # Relationships
     validity = relationship("Validity", back_populates="time_period")
+
+
+# ============================================================================
+# Issued Badge Model (for JWT storage)
+# ============================================================================
+
+class IssuedBadge(Base):
+    """Issued badge stored as JWT string"""
+    __tablename__ = 'issued_badges'
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    jwt_string = Column(Text, nullable=False)  # The JWT/JWS string
+    achievement_id = Column(String(500))  # Reference to achievement IRI
+    organization_id = Column(String(500))  # Reference to organization/issuer ID
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    recipient_id = Column(String(500))  # Reference to recipient ID
 

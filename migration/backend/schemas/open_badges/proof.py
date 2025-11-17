@@ -62,7 +62,8 @@ class ProofSchema(BaseModel):
                 "created": "2024-01-01T00:00:00Z",
                 "cryptosuite": "eddsa-rdfc-2022",
                 "proofPurpose": "assertionMethod",
-                "verificationMethod": "https://example.com/keys/1"
+                "verificationMethod": "https://example.com/keys/1",
+                "proofValue": "z1234567890" # multibase encoded proof value
             }
         }
 

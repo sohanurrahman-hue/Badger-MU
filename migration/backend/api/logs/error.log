@@ -1821,3 +1821,456 @@ Traceback (most recent call last):
 NameError: name 'current_user' is not defined
 2025-11-13 11:38:13,649 - backend.api.main - ERROR - Validation error: [{'type': 'value_error', 'loc': ('body', 'type'), 'msg': "Value error, The type MUST include the IRI 'Achievement'", 'input': ['Badge'], 'ctx': {'error': ValueError("The type MUST include the IRI 'Achievement'")}}]
 2025-11-13 11:39:20,309 - backend.api.main - ERROR - Validation error: [{'type': 'value_error', 'loc': ('body', 'type'), 'msg': "Value error, The type MUST include the IRI 'Achievement'", 'input': ['Badge'], 'ctx': {'error': ValueError("The type MUST include the IRI 'Achievement'")}}]
+2025-11-13 12:48:07,831 - backend.api.main - ERROR - Validation error: [{'type': 'value_error', 'loc': ('body', 'type'), 'msg': "Value error, The type MUST include the IRI 'Achievement'", 'input': ['Badge'], 'ctx': {'error': ValueError("The type MUST include the IRI 'Achievement'")}}]
+2025-11-13 14:02:56,011 - backend.api.main - ERROR - Validation error: [{'type': 'value_error', 'loc': ('body', 'type'), 'msg': "Value error, The type MUST include the IRI 'Achievement'", 'input': ['Badge'], 'ctx': {'error': ValueError("The type MUST include the IRI 'Achievement'")}}]
+2025-11-14 09:40:25,826 - backend.api.main - ERROR - Validation error: [{'type': 'missing', 'loc': ('body', 'id'), 'msg': 'Field required', 'input': {'description': 'Shows only the required fields: id, type, name, description, and criteria', 'summary': 'Minimal example (required fields only)', 'value': {'criteria': {'narrative': 'Complete Python course with 80% or higher'}, 'description': 'Demonstrates proficiency in Python', 'id': 'https://example.com/achievement/1', 'name': 'Python Programming Badge', 'type': ['Badge']}}}, {'type': 'missing', 'loc': ('body', 'criteria'), 'msg': 'Field required', 'input': {'description': 'Shows only the required fields: id, type, name, description, and criteria', 'summary': 'Minimal example (required fields only)', 'value': {'criteria': {'narrative': 'Complete Python course with 80% or higher'}, 'description': 'Demonstrates proficiency in Python', 'id': 'https://example.com/achievement/1', 'name': 'Python Programming Badge', 'type': ['Badge']}}}, {'type': 'missing', 'loc': ('body', 'name'), 'msg': 'Field required', 'input': {'description': 'Shows only the required fields: id, type, name, description, and criteria', 'summary': 'Minimal example (required fields only)', 'value': {'criteria': {'narrative': 'Complete Python course with 80% or higher'}, 'description': 'Demonstrates proficiency in Python', 'id': 'https://example.com/achievement/1', 'name': 'Python Programming Badge', 'type': ['Badge']}}}]
+2025-11-14 09:41:22,712 - backend.api.main - ERROR - Validation error: [{'type': 'missing', 'loc': ('body', 'id'), 'msg': 'Field required', 'input': {'description': 'Shows only the required fields: id, type, name, description, and criteria', 'summary': 'Minimal example (required fields only)', 'value': {'criteria': {'narrative': 'Complete Python course with 80% or higher'}, 'description': 'Demonstrates proficiency in Python', 'id': 'https://example.com/achievement/1', 'name': 'Python Programming Badge', 'type': ['Badge', 'Degree']}}}, {'type': 'missing', 'loc': ('body', 'criteria'), 'msg': 'Field required', 'input': {'description': 'Shows only the required fields: id, type, name, description, and criteria', 'summary': 'Minimal example (required fields only)', 'value': {'criteria': {'narrative': 'Complete Python course with 80% or higher'}, 'description': 'Demonstrates proficiency in Python', 'id': 'https://example.com/achievement/1', 'name': 'Python Programming Badge', 'type': ['Badge', 'Degree']}}}, {'type': 'missing', 'loc': ('body', 'name'), 'msg': 'Field required', 'input': {'description': 'Shows only the required fields: id, type, name, description, and criteria', 'summary': 'Minimal example (required fields only)', 'value': {'criteria': {'narrative': 'Complete Python course with 80% or higher'}, 'description': 'Demonstrates proficiency in Python', 'id': 'https://example.com/achievement/1', 'name': 'Python Programming Badge', 'type': ['Badge', 'Degree']}}}]
+2025-11-14 09:42:51,910 - backend.api.main - ERROR - Validation error: [{'type': 'missing', 'loc': ('body', 'id'), 'msg': 'Field required', 'input': {'description': 'Shows only the required fields: id, type, name, description, and criteria', 'summary': 'Minimal example (required fields only)', 'value': {'criteria': {'narrative': 'Complete Python course with 80% or higher'}, 'description': 'Demonstrates proficiency in Python', 'id': 'https://example.com/achievement/1', 'name': 'Python Programming Badge', 'type': ['Achievement']}}}, {'type': 'missing', 'loc': ('body', 'criteria'), 'msg': 'Field required', 'input': {'description': 'Shows only the required fields: id, type, name, description, and criteria', 'summary': 'Minimal example (required fields only)', 'value': {'criteria': {'narrative': 'Complete Python course with 80% or higher'}, 'description': 'Demonstrates proficiency in Python', 'id': 'https://example.com/achievement/1', 'name': 'Python Programming Badge', 'type': ['Achievement']}}}, {'type': 'missing', 'loc': ('body', 'name'), 'msg': 'Field required', 'input': {'description': 'Shows only the required fields: id, type, name, description, and criteria', 'summary': 'Minimal example (required fields only)', 'value': {'criteria': {'narrative': 'Complete Python course with 80% or higher'}, 'description': 'Demonstrates proficiency in Python', 'id': 'https://example.com/achievement/1', 'name': 'Python Programming Badge', 'type': ['Achievement']}}}]
+2025-11-14 17:16:10,728 - backend.api.main - ERROR - Validation error: [{'type': 'missing', 'loc': ('body', 'recipient_id'), 'msg': 'Field required', 'input': {'achievement_id': '1', 'organization_name': 'Python Test', 'organization_id': '3562', 'achievement_name': 'Test', 'achievement_type': 'Achievement', 'narrative': 'This is a test', 'description': 'this is a test'}}]
+2025-11-14 17:17:05,144 - backend.api.main - ERROR - Unhandled exception: 'public_iri' is an invalid keyword argument for IssuedBadge
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/api/routers/achievements.py", line 184, in issue_badge_as_jwt_eddsa
+    issued_badge = IssuedBadge(
+                   ^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2179, in _declarative_constructor
+    raise TypeError(
+TypeError: 'public_iri' is an invalid keyword argument for IssuedBadge
+2025-11-14 17:18:25,360 - backend.api.main - ERROR - Unhandled exception: 'public_iri' is an invalid keyword argument for IssuedBadge
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/api/routers/achievements.py", line 184, in issue_badge_as_jwt_eddsa
+    issued_badge = IssuedBadge(
+                   ^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2179, in _declarative_constructor
+    raise TypeError(
+TypeError: 'public_iri' is an invalid keyword argument for IssuedBadge
+2025-11-14 17:18:42,562 - backend.api.main - ERROR - Unhandled exception: 'public_iri' is an invalid keyword argument for IssuedBadge
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/api/routers/achievements.py", line 184, in issue_badge_as_jwt_eddsa
+    issued_badge = IssuedBadge(
+                   ^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2179, in _declarative_constructor
+    raise TypeError(
+TypeError: 'public_iri' is an invalid keyword argument for IssuedBadge
+2025-11-14 17:19:29,713 - backend.api.main - ERROR - Unhandled exception: 'recipient_id' is an invalid keyword argument for IssuedBadge
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/api/routers/achievements.py", line 184, in issue_badge_as_jwt_eddsa
+    issued_badge = IssuedBadge(
+                   ^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2179, in _declarative_constructor
+    raise TypeError(
+TypeError: 'recipient_id' is an invalid keyword argument for IssuedBadge
+2025-11-14 17:20:31,983 - backend.api.main - ERROR - Unhandled exception: name 'badge_uuid' is not defined
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/api/routers/achievements.py", line 129, in issue_badge_as_jwt_eddsa
+    public_url = f"{domain}/api/achievements/credentials/{badge_uuid}"
+                                                          ^^^^^^^^^^
+NameError: name 'badge_uuid' is not defined
+2025-11-17 10:37:00,114 - backend.api.main - ERROR - Unhandled exception: 'recipient_id' is an invalid keyword argument for IssuedBadge
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/api/routers/achievements.py", line 184, in issue_badge_as_jwt_eddsa
+    issued_badge = IssuedBadge(
+                   ^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 2179, in _declarative_constructor
+    raise TypeError(
+TypeError: 'recipient_id' is an invalid keyword argument for IssuedBadge
+2025-11-17 11:43:02,502 - backend.api.main - ERROR - Unhandled exception: [Errno 2] No such file or directory: 'private_key.pem'
+Traceback (most recent call last):
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/auth/middleware.py", line 47, in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/venv/lib/python3.11/site-packages/fastapi/routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/api/routers/achievements.py", line 210, in issue_badge_as_jwt_eddsa
+    vc_jwt_string = jwt.encode(jwt_payload, private_key, algorithm='RS256', headers=get_jwk_for_jwt())
+                                                                                    ^^^^^^^^^^^^^^^^^
+  File "/Users/sohanurrahman/Desktop/Projects/badge-engine/migration/backend/api/routers/achievements.py", line 71, in get_jwk_for_jwt
+    with open("private_key.pem", "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'private_key.pem'

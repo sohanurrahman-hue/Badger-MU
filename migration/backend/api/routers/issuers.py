@@ -44,6 +44,7 @@ async def create_issuer(
     current_user: dict = Depends(get_current_user)
 ):
     """Create a new issuer/profile"""
+    
     return {"message": "Issuer creation endpoint - to be implemented"}
 
 

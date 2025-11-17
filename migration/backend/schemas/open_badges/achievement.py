@@ -109,9 +109,9 @@ class ResultDescriptionSchema(BaseModel):
 
 class BaseAchievementSchema(BaseModel):
     """Base achievement schema with common fields"""
-    id: str
-    inLanguage: Optional[str] = Field(None, min_length=2)
-    version: Optional[str] = None
+    id: str = Field(description="REQUIRED: Unique identifier (IRI) for the achievement")
+    inLanguage: Optional[str] = Field(None, min_length=2, description="OPTIONAL: Language code (e.g., 'en', 'es')")
+    version: Optional[str] = Field(None, description="OPTIONAL: Version of the achievement")
 
 
 class RelatedAchievementSchema(BaseAchievementSchema):
@@ -129,28 +129,27 @@ class RelatedAchievementSchema(BaseAchievementSchema):
 
 class AchievementSchema(BaseAchievementSchema):
     """Achievement/Badge definition schema"""
-    type: List[str] = Field(default=["Achievement"])
-    alignment: Optional[List[AlignmentSchema]] = None
-    achievementType: Optional[AchievementTypeEnum] = None
-    creator: Optional["ProfileSchema"] = None
-    creditsAvailable: Optional[float] = None
-    criteria: CriteriaSchema
-    description: str
-    endorsement: Optional[List["EndorsementCredentialSchema"]] = None
-    endorsementJwt: Optional[List[CompactJWSSchema]] = None
-    fieldOfStudy: Optional[str] = None
-    humanCode: Optional[str] = None
-    image: Optional[ImageSchema] = None
-    name: str
-    otherIdentifier: Optional[List[IdentifierEntrySchema]] = None
-    related: Optional[List[RelatedAchievementSchema]] = None
-    resultDescription: Optional[List[ResultDescriptionSchema]] = None
-    specialization: Optional[str] = None
-    tag: Optional[List[str]] = None
+    name: str = Field(description="REQUIRED: Name of the achievement")
+    type: List[AchievementTypeEnum] = Field(default=[AchievementTypeEnum.ACHIEVEMENT], description="REQUIRED: Must include 'Achievement','Badge', 'Certificate', 'Degree', 'Assessment', 'Assignment', 'AssociateDegree', 'Award', 'Certification', 'CommunityService', 'Competency', 'CoCurricular', 'Diploma', 'DoctoralDegree', 'Fieldwork', 'GeneralEducationDevelopment', 'JourneymanCertificate', 'LearningProgram', 'License', 'Membership', 'ProfessionalDoctorate', 'QualityAssuranceCredential', 'MasterCertificate', 'MasterDegree', 'MicroCredential', 'ResearchDoctorate', 'SecondarySchoolDiploma', 'EventAttendance', 'ApprenticeshipCertificate')")
+    alignment: Optional[List[AlignmentSchema]] = Field(None, description="OPTIONAL: Alignment objects")
+    creator: Optional["ProfileSchema"] = Field(None, description="OPTIONAL: Profile that created this achievement")
+    creditsAvailable: Optional[float] = Field(None, description="OPTIONAL: Number of credits available")
+    criteria: CriteriaSchema = Field(description="REQUIRED: Criteria for earning this achievement")
+    description: str = Field(description="REQUIRED: Description of the achievement")
+    endorsement: Optional[List["EndorsementCredentialSchema"]] = Field(None, description="OPTIONAL: Endorsement credentials")
+    endorsementJwt: Optional[List[CompactJWSSchema]] = Field(None, description="OPTIONAL: Endorsement JWTs")
+    fieldOfStudy: Optional[str] = Field(None, description="OPTIONAL: Field of study")
+    humanCode: Optional[str] = Field(None, description="OPTIONAL: Human-readable code")
+    image: Optional[ImageSchema] = Field(None, description="OPTIONAL: Image representing the achievement")
+    otherIdentifier: Optional[List[IdentifierEntrySchema]] = Field(None, description="OPTIONAL: Other identifiers")
+    related: Optional[List[RelatedAchievementSchema]] = Field(None, description="OPTIONAL: Related achievements")
+    resultDescription: Optional[List[ResultDescriptionSchema]] = Field(None, description="OPTIONAL: Result descriptions")
+    specialization: Optional[str] = Field(None, description="OPTIONAL: Specialization")
+    tag: Optional[List[str]] = Field(None, description="OPTIONAL: Tags for categorization")
 
     @field_validator("type")
     @classmethod
-    def validate_type(cls, v: List[str]) -> List[str]:
+    def validate_type(cls, v: List[AchievementTypeEnum]) -> List[AchievementTypeEnum]:
         """Validate that type includes 'Achievement'"""
         if "Achievement" not in v:
             raise ValueError("The type MUST include the IRI 'Achievement'")
@@ -165,8 +164,54 @@ class AchievementSchema(BaseAchievementSchema):
                 "description": "Demonstrates proficiency in Python",
                 "criteria": {
                     "narrative": "Complete Python course with 80% or higher"
+                },
+                "image": {
+                    "id": "https://example.com/badge-image.png",
+                    "type": "Image"
+                },
+                "creditsAvailable": 3.0,
+                "tag": ["programming", "python", "certification"],
+                "fieldOfStudy": "Computer Science",
+                "version": "1.0",
+                "inLanguage": "en"
+            },
+            "examples": [
+                {
+                    "summary": "Minimal example (required fields only)",
+                    "description": "Shows only the required fields: id, type, name, description, and criteria",
+                    "value": {
+                        "id": "https://example.com/achievement/1",
+                        "type": ["Achievement"],
+                        "name": "Python Programming Badge",
+                        "description": "Demonstrates proficiency in Python",
+                        "criteria": {
+                            "narrative": "Complete Python course with 80% or higher"
+                        }
+                    }
+                },
+                {
+                    "summary": "Full example (with optional fields)",
+                    "description": "Shows all required fields plus several optional fields like image, creditsAvailable, tag, etc.",
+                    "value": {
+                        "id": "https://example.com/achievement/1",
+                        "type": ["Achievement"],
+                        "name": "Python Programming Badge",
+                        "description": "Demonstrates proficiency in Python",
+                        "criteria": {
+                            "narrative": "Complete Python course with 80% or higher"
+                        },
+                        "image": {
+                            "id": "https://example.com/badge-image.png",
+                            "type": "Image"
+                        },
+                        "creditsAvailable": 3.0,
+                        "tag": ["programming", "python", "certification"],
+                        "fieldOfStudy": "Computer Science",
+                        "version": "1.0",
+                        "inLanguage": "en"
+                    }
                 }
-            }
+            ]
         }
 
 
